@@ -81,6 +81,8 @@ public class MainActivity extends AppCompatActivity {
     JSONArray KnCArray = null;
     String url = null;
     ImageView imageView;
+    JSONObject bObj;
+    HashMap<String, String> m_li;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
         try {
 
             JSONObject obj = new JSONObject(loadJson());
-            JSONObject bObj;
+
             bArray = obj.getJSONArray("Basic");
             tgtArray = obj.getJSONArray("The Grand Tournament");
             MSoGArray = obj.getJSONArray("Mean Streets of Gadgetzan");
@@ -115,452 +117,22 @@ public class MainActivity extends AppCompatActivity {
             KnCArray = obj.getJSONArray("Kobolds & Catacombs");
 
             cardList = new ArrayList<HashMap<String, String>>();
-            HashMap<String, String> m_li;
+
             //the following for loops populate cardList with all the games cards
-
-            for(int i = 0; i < KnCArray.length(); i++){
-                bObj = (JSONObject) KnCArray.getJSONObject(i);
-                if (bObj.has("collectible")) {
-                    String cardIdVal = bObj.getString("cardId");
-                    String cardNameVal = bObj.getString("name");
-                    String cardTypeVal = bObj.getString("type");
-
-                    m_li = new HashMap<String, String>();
-                    m_li.put("type", cardTypeVal);
-                    m_li.put("cardId", cardIdVal);
-                    m_li.put("name", cardNameVal);
-                    if (bObj.has("text")) {
-                        String cardTextVal = bObj.getString("text");
-                        m_li.put("text", cardTextVal);
-                    }
-                    if (bObj.has("img")) {
-                        String cardImgVal = bObj.getString("img");
-                        String goldImgVal = bObj.getString("imgGold");
-                        m_li.put("imgGold", goldImgVal);
-                        m_li.put("img", cardImgVal);
-                    }
-                    if (bObj.has("collectible")) {
-                        boolean cardColVal = bObj.getBoolean("collectible");
-                        String isCol = "" + cardColVal;
-                        m_li.put("collectible", isCol);
-                    } else {
-                        m_li.put("collectible", "false");
-                    }
-
-                    cardList.add(m_li);
-                }
-            }
-
-            for(int i = 0; i < kftArray.length(); i++){
-                bObj = (JSONObject) kftArray.getJSONObject(i);
-                if (bObj.has("collectible")) {
-                    String cardIdVal = bObj.getString("cardId");
-                    String cardNameVal = bObj.getString("name");
-                    String cardTypeVal = bObj.getString("type");
-
-                    m_li = new HashMap<String, String>();
-                    m_li.put("type", cardTypeVal);
-                    m_li.put("cardId", cardIdVal);
-                    m_li.put("name", cardNameVal);
-                    if (bObj.has("text")) {
-                        String cardTextVal = bObj.getString("text");
-                        m_li.put("text", cardTextVal);
-                    }
-                    if (bObj.has("img")) {
-                        String cardImgVal = bObj.getString("img");
-                        String goldImgVal = bObj.getString("imgGold");
-                        m_li.put("imgGold", goldImgVal);
-                        m_li.put("img", cardImgVal);
-                    }
-                    if (bObj.has("collectible")) {
-                        boolean cardColVal = bObj.getBoolean("collectible");
-                        String isCol = "" + cardColVal;
-                        m_li.put("collectible", isCol);
-                    } else {
-                        m_li.put("collectible", "false");
-                    }
-
-                    cardList.add(m_li);
-                }
-            }
-
-            for(int i = 0; i < uArray.length(); i++){
-                bObj = (JSONObject) uArray.getJSONObject(i);
-                if (bObj.has("collectible")) {
-                    String cardIdVal = bObj.getString("cardId");
-                    String cardNameVal = bObj.getString("name");
-                    String cardTypeVal = bObj.getString("type");
-
-                    m_li = new HashMap<String, String>();
-                    m_li.put("type", cardTypeVal);
-                    m_li.put("cardId", cardIdVal);
-                    m_li.put("name", cardNameVal);
-                    if (bObj.has("text")) {
-                        String cardTextVal = bObj.getString("text");
-                        m_li.put("text", cardTextVal);
-                    }
-                    if (bObj.has("img")) {
-                        String cardImgVal = bObj.getString("img");
-                        String goldImgVal = bObj.getString("imgGold");
-                        m_li.put("imgGold", goldImgVal);
-                        m_li.put("img", cardImgVal);
-                    }
-                    if (bObj.has("collectible")) {
-                        boolean cardColVal = bObj.getBoolean("collectible");
-                        String isCol = "" + cardColVal;
-                        m_li.put("collectible", isCol);
-                    } else {
-                        m_li.put("collectible", "false");
-                    }
-
-                    cardList.add(m_li);
-                }
-            }
-
-            for(int i = 0; i < rArray.length(); i++){
-                bObj = (JSONObject) rArray.getJSONObject(i);
-                if (bObj.has("collectible")) {
-                    String cardIdVal = bObj.getString("cardId");
-                    String cardNameVal = bObj.getString("name");
-                    String cardTypeVal = bObj.getString("type");
-
-                    m_li = new HashMap<String, String>();
-                    m_li.put("type", cardTypeVal);
-                    m_li.put("cardId", cardIdVal);
-                    m_li.put("name", cardNameVal);
-                    if (bObj.has("text")) {
-                        String cardTextVal = bObj.getString("text");
-                        m_li.put("text", cardTextVal);
-                    }
-                    if (bObj.has("img")) {
-                        String cardImgVal = bObj.getString("img");
-                        String goldImgVal = bObj.getString("imgGold");
-                        m_li.put("imgGold", goldImgVal);
-                        m_li.put("img", cardImgVal);
-                    }
-                    if (bObj.has("collectible")) {
-                        boolean cardColVal = bObj.getBoolean("collectible");
-                        String isCol = "" + cardColVal;
-                        m_li.put("collectible", isCol);
-                    } else {
-                        m_li.put("collectible", "false");
-                    }
-
-                    cardList.add(m_li);
-                }
-            }
-            for(int i = 0; i < cArray.length(); i++){
-                bObj = (JSONObject) cArray.getJSONObject(i);
-                if (bObj.has("collectible")) {
-                    String cardIdVal = bObj.getString("cardId");
-                    String cardNameVal = bObj.getString("name");
-                    String cardTypeVal = bObj.getString("type");
-
-                    m_li = new HashMap<String, String>();
-                    m_li.put("type", cardTypeVal);
-                    m_li.put("cardId", cardIdVal);
-                    m_li.put("name", cardNameVal);
-                    if (bObj.has("text")) {
-                        String cardTextVal = bObj.getString("text");
-                        m_li.put("text", cardTextVal);
-                    }
-                    if (bObj.has("img")) {
-                        String cardImgVal = bObj.getString("img");
-                        String goldImgVal = bObj.getString("imgGold");
-                        m_li.put("imgGold", goldImgVal);
-                        m_li.put("img", cardImgVal);
-                    }
-                    if (bObj.has("collectible")) {
-                        boolean cardColVal = bObj.getBoolean("collectible");
-                        String isCol = "" + cardColVal;
-                        m_li.put("collectible", isCol);
-                    } else {
-                        m_li.put("collectible", "false");
-                    }
-
-                    cardList.add(m_li);
-                }
-            }
-            for(int i = 0; i < lArray.length(); i++){
-                bObj = (JSONObject) lArray.getJSONObject(i);
-                if (bObj.has("collectible")) {
-                    String cardIdVal = bObj.getString("cardId");
-                    String cardNameVal = bObj.getString("name");
-                    String cardTypeVal = bObj.getString("type");
-
-                    m_li = new HashMap<String, String>();
-                    m_li.put("type", cardTypeVal);
-                    m_li.put("cardId", cardIdVal);
-                    m_li.put("name", cardNameVal);
-                    if (bObj.has("text")) {
-                        String cardTextVal = bObj.getString("text");
-                        m_li.put("text", cardTextVal);
-                    }
-                    if (bObj.has("img")) {
-                        String cardImgVal = bObj.getString("img");
-                        String goldImgVal = bObj.getString("imgGold");
-                        m_li.put("imgGold", goldImgVal);
-                        m_li.put("img", cardImgVal);
-                    }
-                    if (bObj.has("collectible")) {
-                        boolean cardColVal = bObj.getBoolean("collectible");
-                        String isCol = "" + cardColVal;
-                        m_li.put("collectible", isCol);
-                    } else {
-                        m_li.put("collectible", "false");
-                    }
-
-                    cardList.add(m_li);
-                }
-            }
-
-            for(int i = 0; i < bmArray.length(); i++){
-                bObj = (JSONObject) bmArray.getJSONObject(i);
-                if (bObj.has("collectible")) {
-                    String cardIdVal = bObj.getString("cardId");
-                    String cardNameVal = bObj.getString("name");
-                    String cardTypeVal = bObj.getString("type");
-                    m_li = new HashMap<String, String>();
-                    m_li.put("type", cardTypeVal);
-                    m_li.put("cardId", cardIdVal);
-                    m_li.put("name", cardNameVal);
-                    if (bObj.has("text")) {
-                        String cardTextVal = bObj.getString("text");
-                        m_li.put("text", cardTextVal);
-                    }
-                    if (bObj.has("img")) {
-                        String cardImgVal = bObj.getString("img");
-                        String goldImgVal = bObj.getString("imgGold");
-                        m_li.put("imgGold", goldImgVal);
-                        m_li.put("img", cardImgVal);
-                    }
-                    if (bObj.has("collectible")) {
-                        boolean cardColVal = bObj.getBoolean("collectible");
-                        String isCol = "" + cardColVal;
-                        m_li.put("collectible", isCol);
-                    } else {
-                        m_li.put("collectible", "false");
-                    }
-                    cardList.add(m_li);
-                }
-            }
-
-            for(int i = 0; i < wArray.length(); i++){
-                bObj = (JSONObject) wArray.getJSONObject(i);
-                if (bObj.has("collectible")) {
-                    String cardIdVal = bObj.getString("cardId");
-                    String cardNameVal = bObj.getString("name");
-                    String cardTypeVal = bObj.getString("type");
-                    m_li = new HashMap<String, String>();
-                    m_li.put("type", cardTypeVal);
-                    m_li.put("cardId", cardIdVal);
-                    m_li.put("name", cardNameVal);
-                    if (bObj.has("text")) {
-                        String cardTextVal = bObj.getString("text");
-                        m_li.put("text", cardTextVal);
-                    }
-                    if (bObj.has("img")) {
-                        String cardImgVal = bObj.getString("img");
-                        String goldImgVal = bObj.getString("imgGold");
-                        m_li.put("imgGold", goldImgVal);
-                        m_li.put("img", cardImgVal);
-                    }
-                    if (bObj.has("collectible")) {
-                        boolean cardColVal = bObj.getBoolean("collectible");
-                        String isCol = "" + cardColVal;
-                        m_li.put("collectible", isCol);
-                    } else {
-                        m_li.put("collectible", "false");
-                    }
-                    cardList.add(m_li);
-                }
-            }
-
-            for(int i = 0; i < nArray.length(); i++){
-                bObj = (JSONObject) nArray.getJSONObject(i);
-                if (bObj.has("collectible")) {
-                    String cardIdVal = bObj.getString("cardId");
-                    String cardNameVal = bObj.getString("name");
-                    String cardTypeVal = bObj.getString("type");
-                    m_li = new HashMap<String, String>();
-                    m_li.put("type", cardTypeVal);
-                    m_li.put("cardId", cardIdVal);
-                    m_li.put("name", cardNameVal);
-                    if (bObj.has("text")) {
-                        String cardTextVal = bObj.getString("text");
-                        m_li.put("text", cardTextVal);
-                    }
-                    if (bObj.has("img")) {
-                        String cardImgVal = bObj.getString("img");
-                        String goldImgVal = bObj.getString("imgGold");
-                        m_li.put("imgGold", goldImgVal);
-                        m_li.put("img", cardImgVal);
-                    }
-                    if (bObj.has("collectible")) {
-                        boolean cardColVal = bObj.getBoolean("collectible");
-                        String isCol = "" + cardColVal;
-                        m_li.put("collectible", isCol);
-                    } else {
-                        m_li.put("collectible", "false");
-                    }
-                    cardList.add(m_li);
-                }
-            }
-
-            for(int i = 0; i < kArray.length(); i++){
-                bObj = (JSONObject) kArray.getJSONObject(i);
-                if (bObj.has("collectible")) {
-                    String cardIdVal = bObj.getString("cardId");
-                    String cardNameVal = bObj.getString("name");
-                    String cardTypeVal = bObj.getString("type");
-                    m_li = new HashMap<String, String>();
-                    m_li.put("type", cardTypeVal);
-                    m_li.put("cardId", cardIdVal);
-                    m_li.put("name", cardNameVal);
-                    if (bObj.has("text")) {
-                        String cardTextVal = bObj.getString("text");
-                        m_li.put("text", cardTextVal);
-                    }
-                    if (bObj.has("img")) {
-                        String cardImgVal = bObj.getString("img");
-                        String goldImgVal = bObj.getString("imgGold");
-                        m_li.put("imgGold", goldImgVal);
-                        m_li.put("img", cardImgVal);
-                    }
-                    if (bObj.has("collectible")) {
-                        boolean cardColVal = bObj.getBoolean("collectible");
-                        String isCol = "" + cardColVal;
-                        m_li.put("collectible", isCol);
-                    } else {
-                        m_li.put("collectible", "false");
-                    }
-                    cardList.add(m_li);
-                }
-            }
-
-            for(int i = 0; i < GvGArray.length(); i++){
-                bObj = (JSONObject) GvGArray.getJSONObject(i);
-                if (bObj.has("collectible")) {
-                    String cardIdVal = bObj.getString("cardId");
-                    String cardNameVal = bObj.getString("name");
-                    String cardTypeVal = bObj.getString("type");
-                    m_li = new HashMap<String, String>();
-                    m_li.put("cardId", cardIdVal);
-                    m_li.put("type", cardTypeVal);
-                    m_li.put("name", cardNameVal);
-                    if (bObj.has("text")) {
-                        String cardTextVal = bObj.getString("text");
-                        m_li.put("text", cardTextVal);
-                    }
-                    if (bObj.has("img")) {
-                        String cardImgVal = bObj.getString("img");
-                        String goldImgVal = bObj.getString("imgGold");
-                        m_li.put("imgGold", goldImgVal);
-                        m_li.put("img", cardImgVal);
-                    }
-                    if (bObj.has("collectible")) {
-                        boolean cardColVal = bObj.getBoolean("collectible");
-                        String isCol = "" + cardColVal;
-                        m_li.put("collectible", isCol);
-                    } else {
-                        m_li.put("collectible", "false");
-                    }
-                    cardList.add(m_li);
-                }
-
-            }
-
-            for(int i = 0; i < MSoGArray.length(); i++){
-                bObj = (JSONObject) MSoGArray.getJSONObject(i);
-                if (bObj.has("collectible")) {
-                    String cardIdVal = bObj.getString("cardId");
-                    String cardNameVal = bObj.getString("name");
-                    String cardTypeVal = bObj.getString("type");
-                    m_li = new HashMap<String, String>();
-                    m_li.put("cardId", cardIdVal);
-                    m_li.put("type", cardTypeVal);
-                    m_li.put("name", cardNameVal);
-                    if (bObj.has("text")) {
-                        String cardTextVal = bObj.getString("text");
-                        m_li.put("text", cardTextVal);
-                    }
-                    if (bObj.has("img")) {
-                        String cardImgVal = bObj.getString("img");
-                        String goldImgVal = bObj.getString("imgGold");
-                        m_li.put("imgGold", goldImgVal);
-                        m_li.put("img", cardImgVal);
-                    }
-                    if (bObj.has("collectible")) {
-                        boolean cardColVal = bObj.getBoolean("collectible");
-                        String isCol = "" + cardColVal;
-                        m_li.put("collectible", isCol);
-                    } else {
-                        m_li.put("collectible", "false");
-                    }
-                    cardList.add(m_li);
-                }
-            }
-
-            for(int i = 0; i < tgtArray.length(); i++){
-                bObj = (JSONObject) tgtArray.getJSONObject(i);
-                if (bObj.has("collectible")) {
-                    String cardIdVal = bObj.getString("cardId");
-                    String cardNameVal = bObj.getString("name");
-                    String cardTypeVal = bObj.getString("type");
-                    m_li = new HashMap<String, String>();
-                    m_li.put("type", cardTypeVal);
-                    m_li.put("cardId", cardIdVal);
-                    m_li.put("name", cardNameVal);
-                    if (bObj.has("text")) {
-                        String cardTextVal = bObj.getString("text");
-                        m_li.put("text", cardTextVal);
-                    }
-                    if (bObj.has("img")) {
-                        String cardImgVal = bObj.getString("img");
-                        String goldImgVal = bObj.getString("imgGold");
-                        m_li.put("imgGold", goldImgVal);
-                        m_li.put("img", cardImgVal);
-                    }
-                    if (bObj.has("collectible")) {
-                        boolean cardColVal = bObj.getBoolean("collectible");
-                        String isCol = "" + cardColVal;
-                        m_li.put("collectible", isCol);
-                    } else {
-                        m_li.put("collectible", "false");
-                    }
-                    cardList.add(m_li);
-                }
-            }
-
-
-
-            for(int i = 0; i < bArray.length(); i++){
-
-                    bObj = (JSONObject) bArray.getJSONObject(i);
-                if (bObj.has("collectible")) {
-                    String cardIdVal = bObj.getString("cardId");
-                    String cardNameVal = bObj.getString("name");
-                    String cardTypeVal = bObj.getString("type");
-                    m_li = new HashMap<String, String>();
-                    m_li.put("cardId", cardIdVal);
-                    m_li.put("type", cardTypeVal);
-                    m_li.put("name", cardNameVal);
-                    if (bObj.has("text")) {
-                        String cardTextVal = bObj.getString("text");
-                        m_li.put("text", cardTextVal);
-                    }
-                    if (bObj.has("img")) {
-                        String cardImgVal = bObj.getString("img");
-                        String goldImgVal = bObj.getString("imgGold");
-                        m_li.put("imgGold", goldImgVal);
-                        m_li.put("img", cardImgVal);
-                    }
-
-
-                    cardList.add(m_li);
-                }
-            }
-
+            jsonReader(KnCArray);
+            jsonReader(tgtArray);
+            jsonReader(MSoGArray);
+            jsonReader(GvGArray);
+            jsonReader(kArray);
+            jsonReader(nArray);
+            jsonReader(wArray);
+            jsonReader(bmArray);
+            jsonReader(lArray);
+            jsonReader(cArray);
+            jsonReader(rArray);
+            jsonReader(uArray);
+            jsonReader(kftArray);
+            jsonReader(bArray);
 
         }catch(JSONException e) {
             e.printStackTrace();
@@ -692,6 +264,45 @@ public class MainActivity extends AppCompatActivity {
         return json;
 
 
+    }
+
+    public void jsonReader( JSONArray jArray){
+        try {
+            for (int i = 0; i < jArray.length(); i++) {
+                bObj = (JSONObject) jArray.getJSONObject(i);
+                if (bObj.has("collectible")) {
+                    String cardIdVal = bObj.getString("cardId");
+                    String cardNameVal = bObj.getString("name");
+                    String cardTypeVal = bObj.getString("type");
+
+                    m_li = new HashMap<String, String>();
+                    m_li.put("type", cardTypeVal);
+                    m_li.put("cardId", cardIdVal);
+                    m_li.put("name", cardNameVal);
+                    if (bObj.has("text")) {
+                        String cardTextVal = bObj.getString("text");
+                        m_li.put("text", cardTextVal);
+                    }
+                    if (bObj.has("img")) {
+                        String cardImgVal = bObj.getString("img");
+                        String goldImgVal = bObj.getString("imgGold");
+                        m_li.put("imgGold", goldImgVal);
+                        m_li.put("img", cardImgVal);
+                    }
+                    if (bObj.has("collectible")) {
+                        boolean cardColVal = bObj.getBoolean("collectible");
+                        String isCol = "" + cardColVal;
+                        m_li.put("collectible", isCol);
+                    } else {
+                        m_li.put("collectible", "false");
+                    }
+
+                    cardList.add(m_li);
+                }
+            }
+        }catch(JSONException e){
+            e.printStackTrace();
+        }
     }
 
     private class WorkerThread extends AsyncTask<String, Void, Bitmap> {

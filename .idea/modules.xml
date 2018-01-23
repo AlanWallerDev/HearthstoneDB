@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/HearthstoneDB.iml" filepath="$PROJECT_DIR$/HearthstoneDB.iml" />
+      <module fileurl="file://C:\Users\t00053669\Desktop\HearthstoneDB\HearthstoneDB.iml" filepath="C:\Users\t00053669\Desktop\HearthstoneDB\HearthstoneDB.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://C:\Users\t00053669\Desktop\HearthstoneDB\app\app.iml" filepath="C:\Users\t00053669\Desktop\HearthstoneDB\app\app.iml" />
     </modules>
   </component>
 </project>
