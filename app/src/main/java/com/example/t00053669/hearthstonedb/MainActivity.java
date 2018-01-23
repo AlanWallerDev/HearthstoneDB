@@ -169,6 +169,7 @@ public class MainActivity extends AppCompatActivity {
             public boolean onKey(View v, int keyCode, KeyEvent event){
                 if(keyCode == KeyEvent.KEYCODE_ENTER){
                     if(event.getAction() == KeyEvent.ACTION_UP){
+
                         EditText search = (EditText) findViewById(R.id.search);
                         LinearLayout layout = (LinearLayout) findViewById(R.id.scrollView);
                         layout.removeAllViews();
@@ -176,7 +177,7 @@ public class MainActivity extends AppCompatActivity {
                         HashMap<String, String> y = null;
                         for(int i = 0; i < cardList.size(); i++){
                             y = cardList.get(i);
-                            if(y.get("name").toUpperCase().contains(search.getText().toString().trim().toUpperCase()) && y.containsKey("img")){
+                            if(((y.get("type").equalsIgnoreCase(search.getText().toString())) ||y.get("name").toUpperCase().contains(search.getText().toString().trim().toUpperCase())) && y.containsKey("img")){
                                 String newUrl = y.get("img");
                                 //Log.d("UrlString", newUrl);
                                 urlArray.add(newUrl);
@@ -289,6 +290,7 @@ public class MainActivity extends AppCompatActivity {
                         m_li.put("imgGold", goldImgVal);
                         m_li.put("img", cardImgVal);
                     }
+
                     if (bObj.has("collectible")) {
                         boolean cardColVal = bObj.getBoolean("collectible");
                         String isCol = "" + cardColVal;
