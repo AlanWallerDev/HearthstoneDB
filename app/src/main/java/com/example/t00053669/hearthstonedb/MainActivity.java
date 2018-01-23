@@ -83,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
     ImageView imageView;
     JSONObject bObj;
     HashMap<String, String> m_li;
+    WorkerThread task;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -169,7 +170,11 @@ public class MainActivity extends AppCompatActivity {
             public boolean onKey(View v, int keyCode, KeyEvent event){
                 if(keyCode == KeyEvent.KEYCODE_ENTER){
                     if(event.getAction() == KeyEvent.ACTION_UP){
+                        try {
+                            task.cancel(true);
+                        }catch(Exception e){
 
+                        }
                         EditText search = (EditText) findViewById(R.id.search);
                         LinearLayout layout = (LinearLayout) findViewById(R.id.scrollView);
                         layout.removeAllViews();
@@ -200,7 +205,7 @@ public class MainActivity extends AppCompatActivity {
                         }else {
 
                             for(int i = 0; i < urlArray.size(); i++){
-                                WorkerThread task = new WorkerThread();
+                                task = new WorkerThread();
                                 url = urlArray.get(i);
                                 task.execute(new String[]{url});
                             }
@@ -313,6 +318,8 @@ public class MainActivity extends AppCompatActivity {
             Bitmap map = null;
             for (String url : urls) {
                 map = downloadImage(url);
+                if(isCancelled())
+                    break;
             }
             return map;
         }
