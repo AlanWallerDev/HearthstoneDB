@@ -164,7 +164,7 @@ public class MainActivity extends AppCompatActivity {
         search.setAdapter(adapter);
 
         EditText searchText = (EditText) findViewById(R.id.search);
-
+        // when a query is submitted, clear all ImageViews and populate with new ImageViews of cards matching the query
         searchText.setOnKeyListener(new View.OnKeyListener(){
 
             public boolean onKey(View v, int keyCode, KeyEvent event){
@@ -180,6 +180,7 @@ public class MainActivity extends AppCompatActivity {
                         layout.removeAllViews();
                         ArrayList<String> urlArray = new ArrayList<String>();
                         HashMap<String, String> y = null;
+                        //Get the URLS of the images for the cards matching the query
                         for(int i = 0; i < cardList.size(); i++){
                             y = cardList.get(i);
                             if(((y.get("type").equalsIgnoreCase(search.getText().toString())) ||y.get("name").toUpperCase().contains(search.getText().toString().trim().toUpperCase())) && y.containsKey("img")){
@@ -197,7 +198,7 @@ public class MainActivity extends AppCompatActivity {
                         }
                         search.clearFocus();
 
-                        //imageView = (ImageView) findViewById(R.id.imageView2);
+                        //some input validation
                         if(urlArray.size() == 0) {
                             Toast.makeText(MainActivity.this, "Card Not Found", Toast.LENGTH_SHORT).show();
                         }else if(search.getText().toString().length() < 3){
@@ -335,6 +336,7 @@ public class MainActivity extends AppCompatActivity {
 
             int dpheight = (int) (420 * scale);
             image.getLayoutParams().height = dpheight;
+
 
         }
     }
